@@ -1,0 +1,19 @@
+syntax="proto3";
+package pb;
+
+option go_package = "github.com/renanbastos93/poc-grpc/pb";
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloResponse {
+    string msg = 1;
+}
+
+service HelloService {
+    rpc Hello(HelloRequest) returns (HelloResponse) {};
+}
+
+// command to generate code based on protobuff
+// protoc --proto_path=protos --go_out=plugins=grpc:pb --go_opt=paths=source_relative protos/*.proto
